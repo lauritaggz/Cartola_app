@@ -1,0 +1,44 @@
+{
+  "Supermercado": [
+    "LIDER", "JUMBO","SUPERMERCADO", "UNIMARC", "TOTTUS", "SANTA ISABEL", "MAYORISTA 10", "ERBI"
+  ],
+  "Alimentos":[
+    "VERDULERIA","VERDUERIA","MASQMIGA","PERLA","TRIGAL","NONNA","ESPIGA","PANADERIA"
+  ],
+  "Combustible": [
+    "BENCINA", "COPEC", "SHELL", "ENEX", "PRONTO", "PETROBRAS", "TERPEL"
+  ],
+  "Delivery/Movilidad": [
+    "PEDIDOSYA", "UBER", "DIDI", "RAPPI", "CABIFY", "BEAT", "CORNER SHOP", "JUST EAT"
+  ],
+  "Restaurantes": [
+    "MCDONALDS","LITTLECAE", "BURGER KING", "KFC", "DOMINOS", "PAPA JOHNS", "STARBUCKS", "DUNKIN", "TELEPIZZA", "PIZZA HUT"
+  ],
+  "Transferencias": [
+    "TRANSFERENCIA", "ABONO", "TRASPASO", "DEPOSITO", "GIRO", "PAGO AUTOMATICO"
+  ],
+  "Servicios Financieros": [
+    "BANCO", "INTERES", "COMISION", "MANTENCION", "CARGO", "IVA", "SEGURO", "MULTA", "GASTO COBRANZA"
+  ],
+  "Entretenimiento": [
+    "NETFLIX","YOUTU", "SPOTIFY", "DISNEY", "HBO", "CINEMARK", "CINEHOYTS", "YOUTUBE", "PRIME VIDEO", "PARAMOUNT"
+  ],
+  "Salud": [
+    "CRUZ VERDE", "SALCOBRAND", "AHUMADA", "CLINICA", "HOSPITAL", "CENTRO MEDICO", "FARMACIA", "ISAPRE", "CONSULTA MEDICA"
+  ],
+  "Educación": [
+    "UNIVERSIDAD", "COLEGIO", "INSTITUTO", "MATRICULA", "ARANCEL", "DUOC", "UNAB", "PUCV", "UV", "USM", "UTFSM", "CURSO", "TALLER"
+  ],
+  "Servicios Hogar": [
+    "ENEL", "CHILECTRA", "AGUAS", "ESSBIO", "METROGAS", "MOVISTAR", "ENTEL", "WOM", "VTR", "CLARO", "DIRECTV", "STARLINK"
+  ],
+  "Auto": [
+    "AUTOPISTA", "TAG", "PEAJE", "PATENTE", "AUTOS", "CHEVROLET", "TOYOTA", "NISSAN", "FORD", "HYUNDAI",
+    "KIA", "HONDA", "RENAULT", "MAZDA", "MITSUBISHI", "SUBARU", "BATERIA", "NEUMATICO", "SERVICIO AUTOMOTRIZ",
+    "LAVADO AUTO", "ESTACIONAMIENTO", "REPARACION", "REPUESTOS"
+  ],
+  "Transporte":[
+    "PULLMAN","TURBUS","CHILEPASAJES",""
+  ],
+  "Otros": []
+}
