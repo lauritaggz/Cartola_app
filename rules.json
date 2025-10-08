@@ -7,7 +7,8 @@
     "TOTTUS",
     "SANTA ISABEL",
     "MAYORISTA 10",
-    "ERBI"
+    "ERBI",
+    "ACUENTA"
   ],
   "Alimentos": [
     "VERDULERIA",
@@ -19,7 +20,8 @@
     "ESPIGA",
     "PANADERIA",
     "FOGLIETTA",
-    "DEPAOLI"
+    "DEPAOLI",
+    "MINIMARKET"
   ],
   "Combustible": [
     "BENCINA",
@@ -57,7 +59,8 @@
     "ABONO",
     "TRASPASO",
     "DEPOSITO",
-    "GIRO"
+    "GIRO",
+    "TEF"
   ],
   "Servicios Financieros": [
     "BANCO",
