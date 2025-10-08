@@ -266,11 +266,12 @@ def categorizar(detalle: str, rules: dict) -> str:
     
     # Patrones de transferencias (cubren múltiples formatos de bancos)
     patrones_transferencia = [
-        r"TEF\s+(A|DE)[\s:]",       # TEF A NOMBRE o TEF DE NOMBRE (Banco Estado)
+        r"TEF\s+(A|DE)[\s:]",      # TEF A NOMBRE o TEF DE NOMBRE (Banco Estado)
         r"TRASPASO\s+(A|DE)[\s:]",  # TRASPASO A:/DE: (Banco Chile) o TRASPASO A/DE (otros)
         r"TRANSFERENCIA\s+(A|DE)[\s:]", # TRANSFERENCIA A/DE
         r"GIRO\s+(A|DE)[\s:]",      # GIRO A/DE
-        r"ENVIO\s+(A|DE)[\s:]"      # ENVIO A/DE
+        r"ENVIO\s+(A|DE)[\s:]",      # ENVIO A/DE
+        r"TEF\s+(DESDE)[\s:]"
     ]
     
     for patron in patrones_transferencia:
