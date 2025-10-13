@@ -21,7 +21,7 @@ import tempfile
 # ==========================
 #  FUNCIÓN: Parser de PDF con contraseña
 # ==========================
-def read_pdf(uploaded_file, password=None) -> tuple:
+def read_pdf(archivo, password=None) -> tuple:
     """
     Lee una cartola bancaria en PDF y devuelve un DataFrame y los saldos
     con las columnas: FECHA, DETALLE, CARGOS, ABONOS
@@ -32,7 +32,7 @@ def read_pdf(uploaded_file, password=None) -> tuple:
     saldo_final = None
     
     try:
-        with pdfplumber.open(uploaded_file, password=password) as pdf:
+        with pdfplumber.open(archivo, password=password) as pdf:
             # Intentar extraer como tabla primero (para formatos estructurados)
             for page_num, page in enumerate(pdf.pages, 1):
                 # Extraer tablas
@@ -418,25 +418,91 @@ def generar_pdf_reporte(df, gastos_cat, saldo_inicial, saldo_final, total_gastos
 
 
 # ==========================
+# MODO OSCURO / CLARO
+# ==========================
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = False
+
+def toggle_mode():
+    st.session_state.dark_mode 
+
+# Colores dinámicos según el modo
+if st.session_state.dark_mode:
+    bg_color = "#121212"
+    card_color = "#1E1E1E"
+    text_color = "#FFFFFF"
+    sub_text = "#AAAAAA"
+    sidebar_color = "#0E1B2B"
+else:
+    bg_color = "#F8F9FA"
+    card_color = "#FFFFFF"
+    text_color = "#0E1B2B"
+    sub_text = "#6C757D"
+    sidebar_color = "#0E1B2B"
+
+st.markdown(f"""
+<style>
+body {{
+    background-color: {bg_color};
+}}
+[data-testid="stSidebar"] {{
+    background-color: {sidebar_color};
+    color: white;
+}}
+.sidebar-title {{
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}}
+.main-header {{
+    text-align: center;
+    color: {text_color};
+    margin-bottom: 1rem;
+}}
+.kpi-card {{
+    background-color: {card_color};
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}}
+.kpi-value {{
+    font-size: 28px;
+    font-weight: bold;
+    color: {text_color};
+}}
+.kpi-label {{
+    font-size: 16px;
+    color: {sub_text};
+}}
+</style>
+""", unsafe_allow_html=True)
+
+
+
+# ==========================
 #  INTERFAZ PRINCIPAL
 # ==========================
 
-st.title("📊 Analizador de Cartola Bancaria")
+st.sidebar.markdown('<p class="sidebar-title">📂 Subir Cartola</p>', unsafe_allow_html=True)
+archivo = st.sidebar.file_uploader("Selecciona tu cartola en PDF", type=["pdf"])
 
-# Subir archivo de cartola
-uploaded_file = st.file_uploader(
-    "Sube tu cartola (PDF, CSV o Excel)", 
-    type=["pdf", "csv", "xlsx"]
-)
 
 # Campo de contraseña para PDFs protegidos
 pdf_password = None
-if uploaded_file and uploaded_file.name.endswith(".pdf"):
-    with st.expander("🔒 ¿Tu PDF está protegido con contraseña?"):
+if archivo and archivo.name.endswith(".pdf"):
+    with st.sidebar.expander("🔒 ¿Tu PDF está protegido con contraseña?"):
         pdf_password = st.text_input("Ingresa la contraseña del PDF", type="password")
 
+st.sidebar.markdown("---")
+
+st.title("📊 Analizador de Cartola Bancaria")
+
+
+
+
 # Subir archivo JSON de reglas personalizadas
-uploaded_json = st.file_uploader(
+uploaded_json = st.sidebar.file_uploader(
     "Opcional: sube tus reglas de categorías (rules.json)", 
     type=["json"]
 )
@@ -453,15 +519,15 @@ else:
 #  PROCESAMIENTO DE ARCHIVO
 # ==========================
 
-if uploaded_file:
+if archivo:
     try:
         # Leer cartola según formato
         saldo_inicial = None
         saldo_final = None
         
-        if uploaded_file.name.endswith(".pdf"):
+        if archivo.name.endswith(".pdf"):
             try:
-                df, saldo_inicial, saldo_final = read_pdf(uploaded_file, password=pdf_password if pdf_password else None)
+                df, saldo_inicial, saldo_final = read_pdf(archivo, password=pdf_password if pdf_password else None)
             except Exception as pdf_error:
                 if "password" in str(pdf_error).lower() or "encrypted" in str(pdf_error).lower():
                     st.error("🔒 El PDF está protegido con contraseña. Por favor, ingrésala arriba.")
@@ -470,14 +536,14 @@ if uploaded_file:
                     st.error(f"❌ Error al leer PDF: {pdf_error}")
                     st.info("💡 Verifica que el PDF tenga el formato correcto de cartola bancaria")
                     st.stop()
-        elif uploaded_file.name.endswith(".csv"):
-            df = pd.read_csv(uploaded_file)
+        elif archivo.name.endswith(".csv"):
+            df = pd.read_csv(archivo)
             # Para CSV/Excel, verificar que tenga las columnas necesarias
             if not all(col in df.columns for col in ["FECHA", "DETALLE", "CARGOS", "ABONOS"]):
                 st.error("❌ El CSV debe tener las columnas: FECHA, DETALLE, CARGOS, ABONOS")
                 st.stop()
-        elif uploaded_file.name.endswith(".xlsx"):
-            df = pd.read_excel(uploaded_file)
+        elif archivo.name.endswith(".xlsx"):
+            df = pd.read_excel(archivo)
             # Para CSV/Excel, verificar que tenga las columnas necesarias
             if not all(col in df.columns for col in ["FECHA", "DETALLE", "CARGOS", "ABONOS"]):
                 st.error("❌ El Excel debe tener las columnas: FECHA, DETALLE, CARGOS, ABONOS")
@@ -655,9 +721,9 @@ if uploaded_file:
         )
         st.plotly_chart(fig_pie, use_container_width=True)
         
-        # Botón para exportar reporte en PDF
-        st.subheader("📄 Exportar Reporte")
-        if st.button("📥 Descargar Reporte en PDF"):
+        # 📄 Exportar Reporte en PDF (un solo botón)
+        st.sidebar.subheader("📄 Exportar Reporte")
+        try:
             pdf_buffer = generar_pdf_reporte(
                 edited_df, 
                 gastos_cat, 
@@ -667,11 +733,14 @@ if uploaded_file:
                 total_abonos
             )
             
-            st.download_button(
-                label="💾 Descargar PDF",
+            st.sidebar.download_button(
+                label="📥 Descargar Reporte en PDF",
                 data=pdf_buffer,
                 file_name="reporte_financiero.pdf",
                 mime="application/pdf"
             )
+        except Exception as e:
+            st.sidebar.error(f"⚠️ No se pudo generar el PDF: {e}")
+
     else:
         st.info("No hay gastos para mostrar")
