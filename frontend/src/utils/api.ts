@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000"; // tu backend FastAPI
+const API_URL = "https://finbot-p9be.onrender.com"; // tu backend FastAPI
 
 export async function apiPost(endpoint: string, data: Record<string, string>) {
   const res = await fetch(`${API_URL}${endpoint}`, {
