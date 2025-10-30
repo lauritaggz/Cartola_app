@@ -49,7 +49,7 @@ export default function Dashboard() {
 
     try {
       const uploadRes = await fetch(
-        "http://127.0.0.1:8000/movimientos/upload-pdf",
+        "https://finbot-p9be.onrender.com/movimientos/upload-pdf",
         {
           method: "POST",
           body: formData,
