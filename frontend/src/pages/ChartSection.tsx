@@ -20,7 +20,7 @@ const COLORS_BASE = [
   "#6366F1", // Índigo
 ];
 
-const getColor = (name: string, index: number) => {
+const getColor = (name: string) => {
   const hash = [...name].reduce((acc, c) => acc + c.charCodeAt(0), 0);
   return COLORS_BASE[hash % COLORS_BASE.length];
 };
