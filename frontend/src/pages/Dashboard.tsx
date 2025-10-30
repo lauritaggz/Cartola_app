@@ -61,7 +61,7 @@ export default function Dashboard() {
       console.log("✅ Subida exitosa:", result);
 
       // 🔹 Obtener movimientos desde backend
-      const response = await fetch("http://127.0.0.1:8000/movimientos");
+      const response = await fetch("https://finbot-p9be.onrender.com");
       const movimientosData = await response.json();
       setMovimientos(movimientosData);
 
