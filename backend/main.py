@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import movimientos, auth, reglas
+from backend.routers import movimientos, auth, reglas
+
 
 app = FastAPI(
     title="Cartola API",
