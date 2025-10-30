@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === GLOBAL STYLES === */
+@import "@fontsource/inter";
+@import "@fontsource/poppins";
+
+html,
+body {
+  @apply bg-[#F5F7FA] text-neutral font-sans min-h-screen antialiased;
+}
+
+/* === TITLES === */
+h1,
+h2,
+h3,
+h4 {
+  @apply font-semibold text-neutral;
+}
+
+/* === NAVBAR / HEADER === */
+.navbar {
+  @apply bg-primary text-white shadow-soft py-4 px-8 flex justify-between items-center;
+}
+
+.navbar h1 {
+  @apply text-2xl font-bold tracking-tight;
+}
+
+.navbar span {
+  @apply text-accent text-sm font-light;
+}
+
+/* === BUTTONS === */
+.btn-primary {
+  @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium;
+}
+
+.btn-secondary {
+  @apply bg-secondary-dark text-neutral px-4 py-2 rounded-lg hover:bg-secondary transition-all duration-200 font-medium;
+}
+
+/* === CARDS === */
+.card {
+  @apply bg-white rounded-xl shadow-soft border border-gray-100 p-6 transition hover:shadow-lg;
+}
+
+/* === INPUTS === */
+input[type="file"],
+input,
+select {
+  @apply border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-light;
+}
+
+/* === TABLE === */
+table {
+  @apply w-full text-sm border-collapse;
+}
+
+thead {
+  @apply bg-primary text-white;
+}
+
+th,
+td {
+  @apply px-4 py-2 text-left;
+}
+
+tbody tr:hover {
+  @apply bg-blue-50 transition;
+}
+
+/* === FOOTER === */
+footer {
+  @apply text-center text-sm text-neutral-gray mt-8 mb-2;
+}
