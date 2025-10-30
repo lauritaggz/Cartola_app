@@ -8,7 +8,8 @@
     "SANTA ISABEL",
     "MAYORISTA 10",
     "ERBI",
-    "ACUENTA"
+    "ACUENTA",
+    "HIPER"
   ],
   "Alimentos": [
     "VERDULERIA",
@@ -21,7 +22,8 @@
     "PANADERIA",
     "FOGLIETTA",
     "DEPAOLI",
-    "MINIMARKET"
+    "MINIMARKET",
+    "VICTOR FARIAS"
   ],
   "Combustible": [
     "BENCINA",
@@ -52,15 +54,19 @@
     "STARBUCKS",
     "DUNKIN",
     "TELEPIZZA",
-    "PIZZA HUT"
+    "PIZZA HUT",
+    "CINEMARK",
+    "CINEHOYTS"
   ],
   "Transferencias": [
     "TRANSFERENCIA",
-    "ABONO",
+
     "TRASPASO",
     "DEPOSITO",
     "GIRO",
-    "TEF"
+    "TEF",
+    "TRANSF. DE",
+    "TRANSF. PARA"
   ],
   "Servicios Financieros": [
     "BANCO",
@@ -71,19 +77,20 @@
     "IVA",
     "SEGURO",
     "MULTA",
-    "GASTO COBRANZA"
+    "GASTO COBRANZA",
+    "INVERSION",
+    "ABONO"
   ],
-  "Entretenimiento": [
+  "Suscripciones": [
     "NETFLIX",
     "YOUTU",
     "SPOTIFY",
     "DISNEY",
     "HBO",
-    "CINEMARK",
-    "CINEHOYTS",
     "YOUTUBE",
     "PRIME VIDEO",
-    "PARAMOUNT"
+    "PARAMOUNT",
+    "OPENAI"
   ],
   "Salud": [
     "CRUZ VERDE",
@@ -150,13 +157,25 @@
     "REPARACION",
     "REPUESTOS"
   ],
-  "Transporte": [
-    "PULLMAN",
-    "TURBUS",
-    "CHILEPASAJES",
-    "UBER",
-    "CABIFY",
-    "DIDI"
+  "Transporte": ["PULLMAN", "TURBUS", "CHILEPASAJES", "UBER", "CABIFY", "DIDI"],
+  "Ocio": [
+    "RIPLEY",
+    "PARIS",
+    "FALABELLA",
+    "HITES",
+    "LINIO",
+    "AMAZON",
+    "EBAY",
+    "ALIEXPRESS",
+    "MERCADO LIBRE",
+    "AMERICANINO",
+    "BLOCK",
+    "MALL",
+    "ZARA",
+    "H&M",
+    "SHEIN",
+    "PULL&BEAR",
+    ""
   ],
   "Sin Clasificacion": []
 }
