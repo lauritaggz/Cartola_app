@@ -18,6 +18,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+router = APIRouter(prefix="/movimientos", tags=["movimientos"])
 
 # Registrar routers
 app.include_router(movimientos.router)
