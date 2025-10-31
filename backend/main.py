@@ -20,7 +20,7 @@ app.add_middleware(
 )
 
 # Registrar routers
-app.include_router(movimientos.router, prefix="/movimientos", tags=["Movimientos"])
+app.include_router(movimientos.router)
 app.include_router(auth.router, prefix="/auth", tags=["Autenticación"])
 app.include_router(reglas.router, prefix="/reglas", tags=["Reglas"])
 
