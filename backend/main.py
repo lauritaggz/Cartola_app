@@ -13,7 +13,7 @@ app = FastAPI(
 # Configurar CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # o ["http://localhost:5173"] si usas Vite
+    allow_origins=["https://cartola-finbot.netlify.app"],  # o ["http://localhost:5173"] si usas Vite
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -22,8 +22,8 @@ router = APIRouter(prefix="/movimientos", tags=["movimientos"])
 
 # Registrar routers
 app.include_router(movimientos.router)
-app.include_router(auth.router, prefix="/auth", tags=["Autenticación"])
-app.include_router(reglas.router, prefix="/reglas", tags=["Reglas"])
+app.include_router(auth.router)
+app.include_router(reglas.router)
 
 @app.get("/")
 def root():
