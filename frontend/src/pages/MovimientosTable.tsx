@@ -8,7 +8,7 @@ interface Movimiento {
   abonos: number;
   categoria: string;
 }
-
+const API_URL =  "https://finbot-p9be.onrender.com";
 export default function MovimientosTable({ reload }: { reload: number }) {
   const [movimientos, setMovimientos] = useState<Movimiento[]>([]);
   const [filtro, setFiltro] = useState("");
@@ -16,11 +16,16 @@ export default function MovimientosTable({ reload }: { reload: number }) {
   useEffect(() => {
     const fetchData = async () => {
       const url = filtro
-        ? `http://127.0.0.1:8000/movimientos?categoria=${filtro}`
-        : "http://127.0.0.1:8000/movimientos";
-      const res = await fetch(url);
-      const data = await res.json();
-      setMovimientos(data);
+        ? `${API_URL}/movimientos?categoria=${filtro}`
+        : `${API_URL}/movimientos`;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Error al obtener movimientos");
+        const data = await res.json();
+        setMovimientos(data);
+      } catch (err) {
+        console.error("Error:", err);
+      }
     };
     fetchData();
   }, [reload, filtro]);
